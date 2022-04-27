@@ -1036,7 +1036,7 @@ export async function getNonCompliantApprovalAddress(
   tokenId: string,
   _accountAddress: string
 ): Promise<string | undefined> {
-  const results = await Promise.allSettled([
+  const results = await Promise.all([
     // CRYPTOKITTIES check
     erc721Contract.methods.kittyIndexToApproved(tokenId).call(),
     // Etherbots check

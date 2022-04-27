@@ -10,25 +10,6 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -65,18 +46,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 var _a;
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 exports.getMaxOrderExpirationTimestamp = exports.merkleValidatorByNetwork = exports.getNonCompliantApprovalAddress = exports.onDeprecated = exports.validateAndFormatWalletAddress = exports.delay = exports.assignOrdersToSides = exports.getOrderHash = exports.getWyvernBundle = exports.getWyvernAsset = exports.estimateCurrentPrice = exports.getTransferFeeSettings = exports.getCurrentGasPrice = exports.estimateGas = exports.rawCall = exports.sendRawTransaction = exports.makeBigNumber = exports.isContractAddress = exports.signTypedDataAsync = exports.personalSignAsync = exports.orderToJSON = exports.orderFromJSON = exports.tokenFromJSON = exports.collectionFromJSON = exports.assetContractFromJSON = exports.assetBundleFromJSON = exports.userFromJSON = exports.accountFromJSON = exports.transactionFromJSON = exports.assetEventFromJSON = exports.assetFromJSON = exports.confirmTransaction = exports.promisifyCall = exports.annotateERC20TransferABI = exports.annotateERC721TransferABI = exports.WyvernProtocol = void 0;
-var bignumber_js_1 = __importDefault(require("bignumber.js"));
+var bignumber_js_1 = require("bignumber.js");
 var ethereum_types_1 = require("ethereum-types");
-var ethUtil = __importStar(require("ethereumjs-util"));
-var _ = __importStar(require("lodash"));
+var ethUtil = require("ethereumjs-util");
+var _ = require("lodash");
 var wyvern_js_1 = require("wyvern-js");
-Object.defineProperty(exports, "WyvernProtocol", { enumerable: true, get: function () { return wyvern_js_1.WyvernProtocol; } });
+exports.WyvernProtocol = wyvern_js_1.WyvernProtocol;
 var types_1 = require("wyvern-schemas/dist/types");
 var constants_1 = require("../constants");
 var contracts_1 = require("../contracts");
@@ -87,13 +65,13 @@ var annotateERC721TransferABI = function (asset) { return ({
         {
             name: "_to",
             type: "address",
-            kind: types_1.FunctionInputKind.Replaceable,
+            kind: types_1.FunctionInputKind.Replaceable
         },
         {
             name: "_tokenId",
             type: "uint256",
             kind: types_1.FunctionInputKind.Asset,
-            value: asset.id,
+            value: asset.id
         },
     ],
     target: asset.address,
@@ -101,7 +79,7 @@ var annotateERC721TransferABI = function (asset) { return ({
     outputs: [],
     payable: false,
     stateMutability: types_1.StateMutability.Nonpayable,
-    type: ethereum_types_1.AbiType.Function,
+    type: ethereum_types_1.AbiType.Function
 }); };
 exports.annotateERC721TransferABI = annotateERC721TransferABI;
 var annotateERC20TransferABI = function (asset) { return ({
@@ -110,13 +88,13 @@ var annotateERC20TransferABI = function (asset) { return ({
         {
             name: "_to",
             type: "address",
-            kind: types_1.FunctionInputKind.Replaceable,
+            kind: types_1.FunctionInputKind.Replaceable
         },
         {
             name: "_amount",
             type: "uint256",
             kind: types_1.FunctionInputKind.Count,
-            value: asset.quantity,
+            value: asset.quantity
         },
     ],
     target: asset.address,
@@ -125,12 +103,12 @@ var annotateERC20TransferABI = function (asset) { return ({
         {
             name: "success",
             type: "bool",
-            kind: types_1.FunctionOutputKind.Other,
+            kind: types_1.FunctionOutputKind.Other
         },
     ],
     payable: false,
     stateMutability: types_1.StateMutability.Nonpayable,
-    type: ethereum_types_1.AbiType.Function,
+    type: ethereum_types_1.AbiType.Function
 }); };
 exports.annotateERC20TransferABI = annotateERC20TransferABI;
 // OTHER
@@ -226,7 +204,7 @@ var track = function (web3, txHash, onFinalized) {
                 }
             });
         }); };
-        poll_1().catch();
+        poll_1()["catch"]();
     }
 };
 var confirmTransaction = function (web3, txHash) { return __awaiter(void 0, void 0, void 0, function () {
@@ -278,7 +256,7 @@ var assetFromJSON = function (asset) {
         transferFee: asset.transfer_fee ? makeBigNumber(asset.transfer_fee) : null,
         transferFeePaymentToken: asset.transfer_fee_payment_token
             ? (0, exports.tokenFromJSON)(asset.transfer_fee_payment_token)
-            : null,
+            : null
     };
     // If orders were included, put them in sell/buy order groups
     if (fromJSON.orders && !fromJSON.sellOrders) {
@@ -302,7 +280,7 @@ var assetEventFromJSON = function (assetEvent) {
             : null,
         paymentToken: assetEvent.payment_token
             ? (0, exports.tokenFromJSON)(assetEvent.payment_token)
-            : null,
+            : null
     };
 };
 exports.assetEventFromJSON = assetEventFromJSON;
@@ -317,7 +295,7 @@ var transactionFromJSON = function (transaction) {
         transactionIndex: transaction.transaction_index,
         blockNumber: transaction.block_number,
         blockHash: transaction.block_hash,
-        timestamp: new Date("".concat(transaction.timestamp, "Z")),
+        timestamp: new Date("".concat(transaction.timestamp, "Z"))
     };
 };
 exports.transactionFromJSON = transactionFromJSON;
@@ -327,14 +305,14 @@ var accountFromJSON = function (account) {
         address: account.address,
         config: account.config,
         profileImgUrl: account.profile_img_url,
-        user: account.user ? (0, exports.userFromJSON)(account.user) : null,
+        user: account.user ? (0, exports.userFromJSON)(account.user) : null
     };
 };
 exports.accountFromJSON = accountFromJSON;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 var userFromJSON = function (user) {
     return {
-        username: user.username,
+        username: user.username
     };
 };
 exports.userFromJSON = userFromJSON;
@@ -353,7 +331,7 @@ var assetBundleFromJSON = function (asset_bundle) {
         permalink: asset_bundle.permalink,
         sellOrders: asset_bundle.sell_orders
             ? asset_bundle.sell_orders.map(exports.orderFromJSON)
-            : null,
+            : null
     };
     return fromJSON;
 };
@@ -376,7 +354,7 @@ asset_contract) {
         devSellerFeeBasisPoints: +asset_contract.dev_seller_fee_basis_points,
         imageUrl: asset_contract.image_url,
         externalLink: asset_contract.external_link,
-        wikiLink: asset_contract.wiki_link,
+        wikiLink: asset_contract.wiki_link
     };
 };
 exports.assetContractFromJSON = assetContractFromJSON;
@@ -404,7 +382,7 @@ var collectionFromJSON = function (collection) {
         stats: collection.stats,
         traitStats: collection.traits,
         externalLink: collection.external_url,
-        wikiLink: collection.wiki_url,
+        wikiLink: collection.wiki_url
     };
 };
 exports.collectionFromJSON = collectionFromJSON;
@@ -417,7 +395,7 @@ var tokenFromJSON = function (token) {
         address: token.address,
         imageUrl: token.image_url,
         ethPrice: token.eth_price,
-        usdPrice: token.usd_price,
+        usdPrice: token.usd_price
     };
     return fromJSON;
 };
@@ -430,18 +408,18 @@ var orderFromJSON = function (order) {
         cancelledOrFinalized: order.cancelled || order.finalized,
         markedInvalid: order.marked_invalid,
         metadata: order.metadata,
-        quantity: new bignumber_js_1.default(order.quantity || 1),
+        quantity: new bignumber_js_1["default"](order.quantity || 1),
         exchange: order.exchange,
         makerAccount: order.maker,
         takerAccount: order.taker,
         // Use string address to conform to Wyvern Order schema
         maker: order.maker.address,
         taker: order.taker.address,
-        makerRelayerFee: new bignumber_js_1.default(order.maker_relayer_fee),
-        takerRelayerFee: new bignumber_js_1.default(order.taker_relayer_fee),
-        makerProtocolFee: new bignumber_js_1.default(order.maker_protocol_fee),
-        takerProtocolFee: new bignumber_js_1.default(order.taker_protocol_fee),
-        makerReferrerFee: new bignumber_js_1.default(order.maker_referrer_fee || 0),
+        makerRelayerFee: new bignumber_js_1["default"](order.maker_relayer_fee),
+        takerRelayerFee: new bignumber_js_1["default"](order.taker_relayer_fee),
+        makerProtocolFee: new bignumber_js_1["default"](order.maker_protocol_fee),
+        takerProtocolFee: new bignumber_js_1["default"](order.taker_protocol_fee),
+        makerReferrerFee: new bignumber_js_1["default"](order.maker_referrer_fee || 0),
         waitingForBestCounterOrder: order.fee_recipient.address == constants_1.NULL_ADDRESS,
         feeMethod: order.fee_method,
         feeRecipientAccount: order.fee_recipient,
@@ -455,14 +433,14 @@ var orderFromJSON = function (order) {
         staticTarget: order.static_target,
         staticExtradata: order.static_extradata,
         paymentToken: order.payment_token,
-        basePrice: new bignumber_js_1.default(order.base_price),
-        extra: new bignumber_js_1.default(order.extra),
-        currentBounty: new bignumber_js_1.default(order.current_bounty || 0),
-        currentPrice: new bignumber_js_1.default(order.current_price || 0),
-        createdTime: new bignumber_js_1.default(Math.round(createdDate.getTime() / 1000)),
-        listingTime: new bignumber_js_1.default(order.listing_time),
-        expirationTime: new bignumber_js_1.default(order.expiration_time),
-        salt: new bignumber_js_1.default(order.salt),
+        basePrice: new bignumber_js_1["default"](order.base_price),
+        extra: new bignumber_js_1["default"](order.extra),
+        currentBounty: new bignumber_js_1["default"](order.current_bounty || 0),
+        currentPrice: new bignumber_js_1["default"](order.current_price || 0),
+        createdTime: new bignumber_js_1["default"](Math.round(createdDate.getTime() / 1000)),
+        listingTime: new bignumber_js_1["default"](order.listing_time),
+        expirationTime: new bignumber_js_1["default"](order.expiration_time),
+        salt: new bignumber_js_1["default"](order.salt),
         v: parseInt(order.v),
         r: order.r,
         s: order.s,
@@ -472,7 +450,7 @@ var orderFromJSON = function (order) {
         asset: order.asset ? (0, exports.assetFromJSON)(order.asset) : undefined,
         assetBundle: order.asset_bundle
             ? (0, exports.assetBundleFromJSON)(order.asset_bundle)
-            : undefined,
+            : undefined
     };
     // Use client-side price calc, to account for buyer fee (not added by server) and latency
     fromJSON.currentPrice = estimateCurrentPrice(fromJSON);
@@ -518,7 +496,7 @@ var orderToJSON = function (order) {
         v: order.v,
         r: order.r,
         s: order.s,
-        nonce: order.nonce,
+        nonce: order.nonce
     };
     return asJSON;
 };
@@ -540,8 +518,7 @@ function personalSignAsync(web3, message, signerAddress) {
                             method: "personal_sign",
                             params: [message, signerAddress],
                             from: signerAddress,
-                            id: new Date().getTime(),
-                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                            id: new Date().getTime()
                         }, c);
                     })];
                 case 1:
@@ -575,8 +552,7 @@ function signTypedDataAsync(web3, message, signerAddress) {
                                 method: "eth_signTypedData_v4",
                                 params: [signerAddress, JSON.stringify(message)],
                                 from: signerAddress,
-                                id: new Date().getTime(),
-                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                id: new Date().getTime()
                             }, c);
                         })];
                 case 1:
@@ -590,8 +566,7 @@ function signTypedDataAsync(web3, message, signerAddress) {
                                 method: "eth_signTypedData",
                                 params: [signerAddress, message],
                                 from: signerAddress,
-                                id: new Date().getTime(),
-                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                id: new Date().getTime()
                             }, c);
                         })];
                 case 3:
@@ -640,7 +615,7 @@ function makeBigNumber(arg) {
     }
     // fix "new BigNumber() number type has more than 15 significant digits"
     arg = arg.toString();
-    return new bignumber_js_1.default(arg);
+    return new bignumber_js_1["default"](arg);
 }
 exports.makeBigNumber = makeBigNumber;
 /**
@@ -676,7 +651,7 @@ function sendRawTransaction(web3, _a, onError) {
                                 value: value.toString(),
                                 data: data,
                                 gas: gas === null || gas === void 0 ? void 0 : gas.toString(),
-                                gasPrice: gasPrice === null || gasPrice === void 0 ? void 0 : gasPrice.toString(),
+                                gasPrice: gasPrice === null || gasPrice === void 0 ? void 0 : gasPrice.toString()
                             }, c);
                         })];
                 case 3:
@@ -713,7 +688,7 @@ function rawCall(web3, _a, onError) {
                     return [4 /*yield*/, web3.eth.call({
                             from: from,
                             to: to,
-                            data: data,
+                            data: data
                         })];
                 case 1:
                     result = _b.sent();
@@ -750,7 +725,7 @@ function estimateGas(web3, _a) {
                         from: from,
                         to: to,
                         value: value.toString(),
-                        data: data,
+                        data: data
                     })];
                 case 1:
                     amount = _c.sent();
@@ -772,7 +747,7 @@ function getCurrentGasPrice(web3) {
                 case 0: return [4 /*yield*/, web3.eth.getGasPrice()];
                 case 1:
                     gasPrice = _a.sent();
-                    return [2 /*return*/, new bignumber_js_1.default(gasPrice)];
+                    return [2 /*return*/, new bignumber_js_1["default"](gasPrice)];
             }
         });
     });
@@ -840,7 +815,7 @@ function parseSignatureHex(signature) {
         var ecSignature = {
             v: v,
             r: ethUtil.bufferToHex(r),
-            s: ethUtil.bufferToHex(s),
+            s: ethUtil.bufferToHex(s)
         };
         return ecSignature;
     }
@@ -849,7 +824,7 @@ function parseSignatureHex(signature) {
         var ecSignature = {
             v: v,
             r: ethUtil.bufferToHex(r),
-            s: ethUtil.bufferToHex(s),
+            s: ethUtil.bufferToHex(s)
         };
         return ecSignature;
     }
@@ -866,11 +841,11 @@ function estimateCurrentPrice(order, secondsToBacktrack, shouldRoundUp) {
     if (shouldRoundUp === void 0) { shouldRoundUp = true; }
     var basePrice = order.basePrice, listingTime = order.listingTime, expirationTime = order.expirationTime, extra = order.extra;
     var side = order.side, takerRelayerFee = order.takerRelayerFee, saleKind = order.saleKind;
-    var now = new bignumber_js_1.default(Math.round(Date.now() / 1000)).minus(secondsToBacktrack);
-    basePrice = new bignumber_js_1.default(basePrice);
-    listingTime = new bignumber_js_1.default(listingTime);
-    expirationTime = new bignumber_js_1.default(expirationTime);
-    extra = new bignumber_js_1.default(extra);
+    var now = new bignumber_js_1["default"](Math.round(Date.now() / 1000)).minus(secondsToBacktrack);
+    basePrice = new bignumber_js_1["default"](basePrice);
+    listingTime = new bignumber_js_1["default"](listingTime);
+    expirationTime = new bignumber_js_1["default"](expirationTime);
+    extra = new bignumber_js_1["default"](extra);
     var exactPrice = basePrice;
     if (saleKind === types_2.SaleKind.FixedPrice) {
         // Do nothing, price is correct
@@ -892,7 +867,7 @@ function estimateCurrentPrice(order, secondsToBacktrack, shouldRoundUp) {
         exactPrice = exactPrice.times(+takerRelayerFee / constants_1.INVERSE_BASIS_POINT + 1);
     }
     return shouldRoundUp
-        ? exactPrice.integerValue(bignumber_js_1.default.ROUND_CEIL)
+        ? exactPrice.integerValue(bignumber_js_1["default"].ROUND_CEIL)
         : exactPrice;
 }
 exports.estimateCurrentPrice = estimateCurrentPrice;
@@ -903,13 +878,13 @@ exports.estimateCurrentPrice = estimateCurrentPrice;
  * @param quantity The number of items to trade
  */
 function getWyvernAsset(schema, asset, quantity) {
-    if (quantity === void 0) { quantity = new bignumber_js_1.default(1); }
+    if (quantity === void 0) { quantity = new bignumber_js_1["default"](1); }
     var tokenId = asset.tokenId != null ? asset.tokenId.toString() : undefined;
     return schema.assetFromFields({
         ID: tokenId,
         Quantity: quantity.toString(),
         Address: asset.tokenAddress.toLowerCase(),
-        Name: asset.name,
+        Name: asset.name
     });
 }
 exports.getWyvernAsset = getWyvernAsset;
@@ -940,7 +915,7 @@ function getWyvernBundle(assets, schemas, quantities) {
     ];
     var wyAssetsAndSchemas = wyAssets.map(function (asset, i) { return ({
         asset: asset,
-        schema: schemas[i].name,
+        schema: schemas[i].name
     }); });
     var uniqueAssets = _.uniqBy(wyAssetsAndSchemas, function (group) { return "".concat(sorters[0](group), "-").concat(sorters[1](group)); });
     if (uniqueAssets.length != wyAssetsAndSchemas.length) {
@@ -949,7 +924,7 @@ function getWyvernBundle(assets, schemas, quantities) {
     var sortedWyAssetsAndSchemas = _.sortBy(wyAssetsAndSchemas, sorters);
     return {
         assets: sortedWyAssetsAndSchemas.map(function (group) { return group.asset; }),
-        schemas: sortedWyAssetsAndSchemas.map(function (group) { return group.schema; }),
+        schemas: sortedWyAssetsAndSchemas.map(function (group) { return group.schema; })
     };
 }
 exports.getWyvernBundle = getWyvernBundle;
@@ -1059,4 +1034,3 @@ var getMaxOrderExpirationTimestamp = function () {
     return Math.round(maxExpirationDate.getTime() / 1000);
 };
 exports.getMaxOrderExpirationTimestamp = getMaxOrderExpirationTimestamp;
-//# sourceMappingURL=utils.js.map
