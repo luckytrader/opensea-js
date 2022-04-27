@@ -125,7 +125,7 @@
   "resolved" "https://registry.npmjs.org/@babel/compat-data/-/compat-data-7.16.4.tgz"
   "version" "7.16.4"
 
-"@babel/core@^7.0.0", "@babel/core@^7.7.5":
+"@babel/core@^7.7.5":
   "integrity" "sha512-wUcenlLzuWMZ9Zt8S0KmFwGlH6QKRh3vsm/dhDA3CHkiTA45YuG1XkHRcNRl73EFPXDp/d5kVOU0/y7x2w6OaQ=="
   "resolved" "https://registry.npmjs.org/@babel/core/-/core-7.16.5.tgz"
   "version" "7.16.5"
@@ -725,7 +725,7 @@
   dependencies:
     "@types/node" "*"
 
-"@typescript-eslint/eslint-plugin@^4.0.0 || ^5.0.0", "@typescript-eslint/eslint-plugin@^5.7.0":
+"@typescript-eslint/eslint-plugin@^5.7.0":
   "integrity" "sha512-8RTGBpNn5a9M628wBPrCbJ+v3YTEOE2qeZb7TDkGKTDXSj36KGRg92SpFFaR/0S3rSXQxM0Og/kV9EyadsYSBg=="
   "resolved" "https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.7.0.tgz"
   "version" "5.7.0"
@@ -751,7 +751,7 @@
     "eslint-scope" "^5.1.1"
     "eslint-utils" "^3.0.0"
 
-"@typescript-eslint/parser@^5.0.0", "@typescript-eslint/parser@^5.7.0":
+"@typescript-eslint/parser@^5.7.0":
   "integrity" "sha512-m/gWCCcS4jXw6vkrPQ1BjZ1vomP01PArgzvauBqzsoZ3urLbsRChexB8/YV8z9HwE3qlJM35FxfKZ1nfP/4x8g=="
   "resolved" "https://registry.npmjs.org/@typescript-eslint/parser/-/parser-5.7.0.tgz"
   "version" "5.7.0"
@@ -844,7 +844,7 @@
   "resolved" "https://registry.npmjs.org/acorn-walk/-/acorn-walk-8.2.0.tgz"
   "version" "8.2.0"
 
-"acorn@^6.0.0 || ^7.0.0 || ^8.0.0", "acorn@^8.4.1", "acorn@^8.6.0":
+"acorn@^8.4.1", "acorn@^8.6.0":
   "integrity" "sha512-U1riIR+lBSNi3IbxtaHOIKdH8sLFv3NYfNv8sg7ZsNhcfl4HF2++BfqqrNAxoCLQW1iiylOj76ecnaUxz+z9yw=="
   "resolved" "https://registry.npmjs.org/acorn/-/acorn-8.6.0.tgz"
   "version" "8.6.0"
@@ -2086,7 +2086,7 @@
   dependencies:
     "once" "^1.4.0"
 
-"enquirer@^2.3.5", "enquirer@^2.3.6", "enquirer@>= 2.3.0 < 3":
+"enquirer@^2.3.5", "enquirer@^2.3.6":
   "integrity" "sha512-yjNnPr315/FjS4zIsUxYguYUPP2e1NK4d7E7ZOLiyYCcbFBiTMyID+2wvm2w6+pZ/odMA7cRkjhsPbltwBOrLg=="
   "resolved" "https://registry.npmjs.org/enquirer/-/enquirer-2.3.6.tgz"
   "version" "2.3.6"
@@ -2226,7 +2226,7 @@
     "find-up" "^2.1.0"
     "pkg-dir" "^2.0.0"
 
-"eslint-plugin-import@*", "eslint-plugin-import@^2.25.3":
+"eslint-plugin-import@^2.25.3":
   "integrity" "sha512-RzAVbby+72IB3iOEL8clzPLzL3wpDrlwjsTBAQXgyp5SeTqqY+0bFubwuo+y/HLhNZcXV4XqTBO4LGsfyHIDXg=="
   "resolved" "https://registry.npmjs.org/eslint-plugin-import/-/eslint-plugin-import-2.25.3.tgz"
   "version" "2.25.3"
@@ -2292,7 +2292,7 @@
   "resolved" "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-3.1.0.tgz"
   "version" "3.1.0"
 
-"eslint@*", "eslint@^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8", "eslint@^6.0.0 || ^7.0.0 || ^8.0.0", "eslint@^8.4.1", "eslint@>=5", "eslint@>=7.0.0", "eslint@>=7.28.0":
+"eslint@^8.4.1":
   "integrity" "sha512-tVGSkgNbOfiHyVte8bCM8OmX+xG9PzVG/B4UCF60zx7j61WIVY/AqJECDgpLD4DbbESD0e174gOg3ZlrX15GDg=="
   "resolved" "https://registry.npmjs.org/eslint/-/eslint-8.5.0.tgz"
   "version" "8.5.0"
@@ -4979,7 +4979,7 @@
     "sort-object-keys" "^1.1.3"
     "sort-order" "^1.0.1"
 
-"prettier@^2.1.2", "prettier@>=2.0.0", "prettier@2.5.1":
+"prettier@^2.1.2", "prettier@2.5.1":
   "integrity" "sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg=="
   "resolved" "https://registry.npmjs.org/prettier/-/prettier-2.5.1.tgz"
   "version" "2.5.1"
@@ -6050,7 +6050,7 @@
     "rlp" "^2.0.0"
     "types-bn" "https://github.com/machinomy/types-bn.git"
 
-"typescript@>=2.7", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta", "typescript@>=3.7.0", "typescript@>=4.1.0", "typescript@4.0.x || 4.1.x || 4.2.x || 4.3.x || 4.4.x || 4.5.x", "typescript@4.5.4":
+"typescript@4.5.4":
   "integrity" "sha512-VgYs2A2QIRuGphtzFV7aQJduJ2gyfTljngLzjpfW9FoYZF6xuw1W0vW9ghCKLfcWrCFxK81CSGRAvS1pn4fIUg=="
   "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.5.4.tgz"
   "version" "4.5.4"
@@ -6455,7 +6455,7 @@
     "randombytes" "^2.1.0"
     "utf8" "3.0.0"
 
-"web3@^1.0.0", "web3@^1.7.0", "web3@1.7.0":
+"web3@^1.7.0", "web3@1.7.0":
   "integrity" "sha512-n39O7QQNkpsjhiHMJ/6JY6TaLbdX+2FT5iGs8tb3HbIWOhPm4+a7UDbr5Lkm+gLa9aRKWesZs5D5hWyEvg4aJA=="
   "resolved" "https://registry.npmjs.org/web3/-/web3-1.7.0.tgz"
   "version" "1.7.0"
